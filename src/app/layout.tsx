@@ -16,8 +16,28 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Stephan Textil | Master Weavers",
-  description: "Textiles de alta gama y herencia artesanal.",
+  title: {
+    template: "%s | Stephan Textil",
+    default: "Stephan Textil | Master Weavers",
+  },
+  description: "Textiles deportivos de alta gama con herencia artesanal. Tecnología Dry-Fit, Lycra y Malla con calidad de exportación. Venta por rollo y metro en CDMX.",
+  keywords: ["telas deportivas", "dry-fit", "lycra", "textil mexico", "sublimacion", "stephan textil"],
+  openGraph: {
+    title: "Stephan Textil | Master Weavers",
+    description: "Calidad y Excelencia en Telas Deportivas. Visita nuestro catálogo exclusivo.",
+    url: "https://stephan-textil.vercel.app", 
+    siteName: "Stephan Textil",
+    images: [
+      {
+        url: "/og-image.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "Stephan Textil - Heritage & Quality",
+      },
+    ],
+    locale: "es_MX",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
