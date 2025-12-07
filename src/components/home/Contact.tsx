@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null); 
   const [captchaValido, setCaptchaValido] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
 
@@ -14,22 +15,23 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!captchaValido) {
       alert("Por favor, confirma que no eres un robot.");
       return;
     }
-    
+
     setEnviando(true);
-    
+
     setTimeout(() => {
-      alert("¡Gracias! Hemos recibido tu mensaje. Nos pondremos en contacto pronto.");
+      alert("¡Gracias! Hemos recibido tu mensaje (Simulación). Nos pondremos en contacto pronto.");
       setEnviando(false);
+      form.current?.reset(); 
     }, 1500);
   };
 
   return (
     <section id="contacto" className="relative py-24 px-6 bg-[#0F1C18] text-[#E8E4D0] border-t border-[#C5A065]/20 overflow-hidden">
-      
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start relative z-10">
         
         <motion.div 
@@ -58,8 +60,8 @@ export default function Contact() {
           </div>
 
           <div className="w-full h-64 md:h-80 bg-[#1A3C34] rounded-sm border border-[#C5A065]/20 overflow-hidden relative group shadow-2xl">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.480776362447!2d-99.1335966!3d19.4346452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f93368255555%3A0x5555555555555555!2sRep%C3%BAblica%20de%20Guatemala%20114C%2C%20Centro%20Hist%C3%B3rico%2C%2006000%20Ciudad%20de%20M%C3%A9xico!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
+             <iframe 
+              src="https://maps.google.com/maps?q=Rep%C3%BAblica+de+Guatemala+114c,+Centro,+CDMX&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%" 
               height="100%" 
               style={{ border: 0, filter: "grayscale(100%) invert(92%) contrast(83%) brightness(90%)" }} 
@@ -68,13 +70,8 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               className="group-hover:filter-none transition-all duration-700"
             ></iframe>
-            
-            <div className="absolute top-2 right-2 bg-[#0F1C18]/80 px-3 py-1 text-[9px] tracking-widest text-[#C5A065] backdrop-blur-sm pointer-events-none border border-[#C5A065]/20">
-              CENTRO CDMX
-            </div>
           </div>
         </motion.div>
-
 
         <motion.div 
           initial={{ opacity: 0, x: 30 }}
@@ -84,7 +81,7 @@ export default function Contact() {
         >
           <h3 className="font-serif text-3xl mb-8 text-[#C5A065]">Cotiza tus Telas</h3>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-6">
             <div className="group">
               <input 
                 type="text" 
@@ -107,14 +104,14 @@ export default function Contact() {
               <textarea 
                 rows={4} 
                 required
-                placeholder="¿Qué tipo de tela buscas?" 
+                placeholder="¿Qué tipo de tela buscas? (Lana, Lino, Seda...)" 
                 className="w-full bg-transparent border-b border-[#C5A065]/30 py-3 text-[#E8E4D0] focus:outline-none focus:border-[#C5A065] transition-colors placeholder:text-[#E8E4D0]/30 resize-none font-sans"
               ></textarea>
             </div>
 
             <div className="pt-2 transform scale-90 origin-left">
               <ReCAPTCHA
-                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" 
+                sitekey="TU_CLAVE_DE_SITIO_REAL_DE_GOOGLE" 
                 onChange={handleCaptchaChange}
                 theme="dark"
               />
