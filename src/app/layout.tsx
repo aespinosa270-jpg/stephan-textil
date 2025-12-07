@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-// Importamos las fuentes de Google Fonts
 import { Cinzel, Geist } from "next/font/google"; 
 import "./globals.css";
+import SmoothScroll from "@/components/ui/SmoothScroll"; 
 
-// Configuración de la fuente elegante (Títulos)
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
   display: "swap",
 });
 
-// Configuración de la fuente moderna (Textos largos)
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
@@ -29,10 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      {/* Aquí inyectamos las variables de las fuentes y el color de fondo base */}
       <body
         className={`${cinzel.variable} ${geist.variable} antialiased bg-stephan-cream text-stephan-brown`}
       >
+        <SmoothScroll />              
+        <div className="bg-noise"></div> 
+        
         {children}
       </body>
     </html>

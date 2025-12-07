@@ -80,7 +80,11 @@ export default function Collections() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group relative aspect-square cursor-pointer overflow-hidden border border-[#E8E4D0]/10 rounded-sm"
+                  whileHover={{ 
+                    scale: 1.05,
+                    borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%" 
+                  }}
+                  className="group relative aspect-square cursor-pointer overflow-hidden border border-[#E8E4D0]/10 rounded-sm transition-all duration-500 ease-in-out"
                 >
                   <div 
                     className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"

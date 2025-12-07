@@ -1,21 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- PALETA STEPHAN (Invertimos la jerarquía) --- */
-  --color-stephan-green: #1A3C34; /* FONDO PRINCIPAL */
-  --color-stephan-red: #8B3A3A;   /* ACENTOS / SECCIONES */
-  --color-stephan-cream: #E8E4D0; /* TEXTO (Tinta clara) */
-  --color-stephan-gold: #D4AF37;  /* BORDES DE LUJO */
-  --color-stephan-black: #0F1C18; /* SOMBRAS PROFUNDAS */
 
-  /* --- TIPOGRAFÍA --- */
+  --color-stephan-green: #1A3C34; 
+  --color-stephan-red: #8B3A3A;   
+  --color-stephan-cream: #E8E4D0; 
+  --color-stephan-gold: #D4AF37;  
+  --color-stephan-black: #0F1C18; 
+
   --font-serif: var(--font-cinzel), serif;
   --font-sans: var(--font-geist-sans), sans-serif;
 }
 
-/* El sitio ahora es OSCURO por defecto */
 body {
   background-color: var(--color-stephan-green);
   color: var(--color-stephan-cream);
   -webkit-font-smoothing: antialiased;
+}
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50; 
+  opacity: 0.05; 
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(120%) brightness(100%);
 }
