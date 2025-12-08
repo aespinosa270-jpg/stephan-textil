@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Cinzel, Geist } from "next/font/google"; 
 import "./globals.css";
-import SmoothScroll from "@/components/ui/SmoothScroll"; 
+import SmoothScroll from "@/components/ui/SmoothScroll";
+import SmartBot from "@/components/ui/SmartBot";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
   },
 };
 
+// 3. Layout Principal
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,10 +52,12 @@ export default function RootLayout({
       <body
         className={`${cinzel.variable} ${geist.variable} antialiased bg-stephan-cream text-stephan-brown`}
       >
-        <SmoothScroll />              
+        <SmoothScroll />
         <div className="bg-noise"></div> 
         
         {children}
+
+        <SmartBot />
       </body>
     </html>
   );

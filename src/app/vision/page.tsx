@@ -2,14 +2,13 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Contact from "@/components/home/Contact";
-import FloatingWhatsapp from "@/components/ui/FloatingWhatsapp";
 import { motion } from 'framer-motion';
 
 export default function VisionPage() {
   return (
     <main className="relative min-h-screen bg-[#1A3C34] text-[#E8E4D0]">
       <Navbar />
-      <FloatingWhatsapp />
+      
 
       <section className="relative pt-40 pb-20 px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">

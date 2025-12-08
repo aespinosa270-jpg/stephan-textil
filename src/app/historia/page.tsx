@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Contact from "@/components/home/Contact";
-import FloatingWhatsapp from "@/components/ui/FloatingWhatsapp";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -10,7 +9,7 @@ export default function HistoriaPage() {
   return (
     <main className="relative min-h-screen bg-[#1A3C34] text-[#E8E4D0]">
       <Navbar />
-      <FloatingWhatsapp />
+      
 
       <section className="relative pt-40 pb-20 px-6 overflow-hidden min-h-[70vh] flex items-center justify-center">
         
@@ -65,7 +64,7 @@ export default function HistoriaPage() {
                 <strong>Stephan Textil</strong> no fue fundado por una junta directiva anónima. Fue forjado por una familia unida por el hilo invisible de la perseverancia. En 2020, decidimos materializar una visión: crear un espacio donde la calidad textil se encontrara con la calidez humana.
               </p>
               <p>
-                Sabíamos que el mercado estaba lleno de opciones frías y transaccionales. Nosotros queríamos construir algo distinto. Queríamos que cada rollo de tela entregado llevara consigo el compromiso de nuestros valores.
+                Sabíamos que el mercado estaba lleno de opciones frías y transaccionales. Nosotros queríamos construir algo distinto. Queríamos que cada rollo de tela entregado llevara consigo el compromiso de nuestro apellido.
               </p>
             </div>
           </motion.div>
@@ -81,7 +80,7 @@ export default function HistoriaPage() {
             <div className="relative w-48 h-48 md:w-64 md:h-64 opacity-80 mix-blend-screen">
                 <Image
                   src="/sello-st.png"
-                  alt="Familia Stephan"
+                  alt="Emblema Familia Stephan"
                   fill
                   className="object-contain invert sepia saturate-200 hue-rotate-[10deg] drop-shadow-[0_0_30px_rgba(197,160,101,0.5)]"
                 />
