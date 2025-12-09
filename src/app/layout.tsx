@@ -3,6 +3,7 @@ import { Cinzel, Geist } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import SmartBot from "@/components/ui/SmartBot";
+import Footer from "@/components/layout/Footer"; 
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -41,7 +42,6 @@ export const metadata: Metadata = {
   },
 };
 
-// 3. Layout Principal
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +57,8 @@ export default function RootLayout({
         
         {children}
 
+        <Footer />
+        
         <SmartBot />
       </body>
     </html>
