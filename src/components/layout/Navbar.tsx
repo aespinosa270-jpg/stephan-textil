@@ -1,5 +1,9 @@
+'use client'; 
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Nuestras Telas", href: "/#telas" },
@@ -8,18 +12,19 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false); 
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-gradient-to-b from-[#1A3C34]/95 to-transparent backdrop-blur-[2px]">
       
-      <Link href="/" className="group relative block">
-        <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-105">
-          
+      <Link href="/" className="group relative block z-50">
+        <div className="relative w-14 h-14 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-105">
           <div className="absolute inset-0 bg-[#C5A065] opacity-10 blur-[25px] rounded-full group-hover:opacity-30 transition-opacity duration-500"></div>
-          
           <Image
-            src="/111.png"   
+            src="/111.png"
             alt="Sello Stephan Textil"
             fill
+            className="object-contain transition-all duration-300 drop-shadow-xl invert sepia saturate-[8] hue-rotate-[35deg] brightness-[0.6] contrast-[1.5]"
           />
         </div>
       </Link>
@@ -37,7 +42,57 @@ export default function Navbar() {
         ))}
       </div>
 
-      <Link href="#contacto">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="md:hidden z-50 text-[#C5A065] p-2 focus:outline-none"
+      >
+        <div className="w-8 flex flex-col items-end gap-1.5">
+            <motion.span 
+              animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              className="w-full h-[2px] bg-[#C5A065] block" 
+            />
+            <motion.span 
+              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="w-3/4 h-[2px] bg-[#C5A065] block" 
+            />
+            <motion.span 
+              animate={isOpen ? { rotate: -45, y: -8, width: '100%' } : { rotate: 0, y: 0, width: '50%' }}
+              className="w-1/2 h-[2px] bg-[#C5A065] block" 
+            />
+        </div>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="fixed inset-0 bg-[#0F1C18]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden"
+            >
+                {navLinks.map((item) => (
+                    <Link 
+                        key={item.name} 
+                        href={item.href}
+                        onClick={() => setIsOpen(false)} // Cierra al hacer clic
+                        className="text-2xl font-serif text-[#E8E4D0] hover:text-[#C5A065] transition-colors tracking-widest uppercase"
+                    >
+                        {item.name}
+                    </Link>
+                ))}
+                
+                <div className="w-16 h-[1px] bg-[#C5A065]/50 my-8"></div>
+                
+                <Link href="#contacto" onClick={() => setIsOpen(false)}>
+                    <button className="text-[#0F1C18] bg-[#C5A065] text-sm font-bold tracking-widest px-8 py-4 uppercase">
+                        Contáctanos
+                    </button>
+                </Link>
+            </motion.div>
+        )}
+      </AnimatePresence>
+
+      <Link href="#contacto" className="hidden md:block">
         <button className="text-[#E8E4D0] text-xs font-bold tracking-widest border border-[#E8E4D0]/30 px-6 py-3 hover:bg-[#C5A065] hover:text-[#0F1C18] hover:border-[#C5A065] transition-all duration-300 uppercase backdrop-blur-sm">
           Contacto
         </button>
