@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-
+  
   --color-stephan-green: #1A3C34; 
   --color-stephan-red: #8B3A3A;   
   --color-stephan-cream: #E8E4D0; 
@@ -17,6 +17,7 @@ body {
   color: var(--color-stephan-cream);
   -webkit-font-smoothing: antialiased;
 }
+
 .bg-noise {
   position: fixed;
   top: 0;
@@ -24,8 +25,16 @@ body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 50; 
-  opacity: 0.05; 
+  z-index: 50;
+  opacity: 0.05;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
   filter: contrast(120%) brightness(100%);
+  
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .bg-noise {
+    display: block; 
+  }
 }

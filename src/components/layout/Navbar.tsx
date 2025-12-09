@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 
 import Link from "next/link";
 import Image from "next/image";
@@ -12,19 +12,23 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-gradient-to-b from-[#1A3C34]/95 to-transparent backdrop-blur-[2px]">
       
       <Link href="/" className="group relative block z-50">
-        <div className="relative w-14 h-14 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-105">
-          <div className="absolute inset-0 bg-[#C5A065] opacity-10 blur-[25px] rounded-full group-hover:opacity-30 transition-opacity duration-500"></div>
+        <div className="relative w-14 h-14 md:w-20 md:h-20 transition-transform duration-500 ease-out group-hover:scale-110">
+          
+          <div className="absolute inset-1 bg-[#C5A065] opacity-20 blur-[15px] rounded-full transition-all duration-500 group-hover:opacity-50 group-hover:blur-[25px] group-hover:inset-0"></div>
+          
+          <div className="absolute inset-2 bg-[#E8E4D0] opacity-0 blur-[10px] rounded-full transition-opacity duration-500 group-hover:opacity-20"></div>
+
           <Image
             src="/111.png"
             alt="Sello Stephan Textil"
             fill
-            className="object-contain transition-all duration-300 drop-shadow-xl invert sepia saturate-[8] hue-rotate-[35deg] brightness-[0.6] contrast-[1.5]"
+            className="object-contain relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(197,160,101,0.8)]"
           />
         </div>
       </Link>
@@ -74,7 +78,7 @@ export default function Navbar() {
                     <Link 
                         key={item.name} 
                         href={item.href}
-                        onClick={() => setIsOpen(false)} // Cierra al hacer clic
+                        onClick={() => setIsOpen(false)}
                         className="text-2xl font-serif text-[#E8E4D0] hover:text-[#C5A065] transition-colors tracking-widest uppercase"
                     >
                         {item.name}
