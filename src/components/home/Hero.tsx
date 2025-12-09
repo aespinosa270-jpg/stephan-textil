@@ -10,9 +10,12 @@ export default function Hero() {
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     
-    const count = isMobile ? 6 : 20;
+    if (isMobile) {
+        setParticles([]); 
+        return; 
+    }
 
-    const generatedParticles = Array.from({ length: count }).map((_, i) => ({
+    const generatedParticles = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100 + "%",
       y: Math.random() * 100 + "%",
@@ -36,6 +39,7 @@ export default function Hero() {
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[60%] bg-[radial-gradient(ellipse_at_top,#C5A065_0%,transparent_70%)] opacity-20 blur-[100px]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#0F1C18_100%)] mix-blend-multiply"></div>
+        
         <div className="absolute inset-0 opacity-15 bg-noise mix-blend-overlay"></div>
       </div>
 
